@@ -22,6 +22,21 @@ class BadgesController < ApplicationController
 		@badge = Badge.find(params[:id])
 	end
 
+	def edit
+		@badge = Badge.find(params[:id])
+	end
+
+	def update
+		@badge = Badge.find(params[:id])
+		if @badge.update_attributes(badge_params)
+			flash[:alert] = "Badge has been updated."
+			redirect_to :action => 'show', :id => @badge
+		else
+			flash[:alert] = "Badge has not been updated."
+			render :action => 'edit'
+		end
+	end
+
 	def destroy
 		@badge = Badge.find(params[:id])
 		@badge.destroy

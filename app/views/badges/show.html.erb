@@ -3,4 +3,6 @@
 <h2><%= @badge.name %></h2>
 <p><%= @badge.description %></p>
 
-<p><%= link_to "Remove Badge", badge_path(@badge), method: :delete, data: {confirm: "Are you sure you want to delete this badge?"} %>
+<p><%= link_to "Edit Badge", edit_badge_path(@badge) %> 
+	<%= link_to "Remove Badge", badge_path(@badge), method: :delete, data: {confirm: "Are you sure you want to delete this badge?"} %>
+</p>
