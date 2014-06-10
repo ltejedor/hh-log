@@ -1,20 +1,25 @@
 class BadgesController < ApplicationController
+	before_filter :find_user :only => [:show,
+                                        :edit,
+                                        :update,
+                                        :destroy]
+
 	def index
 		@badges = Badge.all
 	end
 
 	def new
-		@badge = Badge.new
+		@badge = @user.badges.build
 	end
 
 	def create
-		@badge = Badge.new(badge_params)
+		@badge = current_user.badges.build(badge_params)
 		if @badge.save
 			flash[:notice] = "Badge has been added."
 			redirect_to @badge
 		else
 			flash[:alert] = "Badge has not been added."
-			redirect_to badges_path
+			redirect_to user_badges_path
 		end
 	end
 
@@ -43,14 +48,17 @@ class BadgesController < ApplicationController
 
 		flash[:notice] = "Badge has been removed."
 
-		redirect_to badges_path
+		redirect_to user_badges_path
 	end
 
 	private
 
 	def badge_params
-		params.require(:badge).permit(:name, :description)
+		params.require(:badge).permit(:name, :description, :user_id)
 	end
 
+	def find_user
+		@user = current_user
+	end
 
 end
