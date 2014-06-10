@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root :to => 'users#index'
+  root to: 'static_pages#home'
   resources :users do
     resources :badges
   end
