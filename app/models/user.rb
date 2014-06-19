@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :badginations
-  has_many :badges, :through => :badginations
+  has_many :badges, through: :badginations
 end

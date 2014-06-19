@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  resources :badginations
   devise_for :users
 
-  root to: 'static_pages#home'
-  resources :users do
-    resources :badges
-  end
+  root to: 'badginations#index'
+  resources :users
+  resources :badges
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
