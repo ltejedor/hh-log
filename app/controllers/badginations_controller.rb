@@ -31,6 +31,25 @@ class BadginationsController < ApplicationController
 		end
 	end
 
+	def update
+		respond_to do |format|
+			if @badgination.update(badgination_params)
+				flash[:notice] = "Badge has been updated."
+				redirect_to @badgination
+			else
+				flash[:alert] = "Badge has not been updated"
+				redirect_to badginations_path
+			end
+		end
+	end
+
+	def destroy
+		@badgination.destroy
+		respond_to do |format|
+			redirect_to badginations_path
+		end
+	end
+
 	private
 
 	def set_badgination
