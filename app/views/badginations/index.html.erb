@@ -1,19 +1,13 @@
 <h1>Badge Setter</h1>
 
-<% @badginations.each do |badgination| %>
-	<p><%= badgination.badge.name %> assigned to</p>
-	<p><%= badgination.user.email %></p>
 
-	<p>
-		<%= link_to 'Show', badgination %>
-		<%- link_to 'Edit', edit_badgination_path(badgination) %>
-		<%= link_to 'Destroy', badgination, method: :delete, data: { confirm: 'Are you sure?' } %>
-	</p>
-
-<% end %>
 
 <% @users.each do |user| %>
 	<p><%= user.email %></p>
+	<% user.badges.each do |badge| %>
+		<p><%= badge.name %></p>
+	
+	<% end %>
 <% end %>
 
 <%= link_to 'New Badge Set', new_badgination_path %><br>
