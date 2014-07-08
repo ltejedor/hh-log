@@ -1,0 +1,16 @@
+<%= form_for(@badgination) do |f| %>
+
+
+  <div class="field">
+    <%= f.label :badge %><br>
+    <%= f.collection_select(:badge_id, Badge.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br>
+    <%= f.collection_select(:user_id, User.all, :id, :email) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

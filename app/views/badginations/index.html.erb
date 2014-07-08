@@ -2,7 +2,7 @@
 
 <% @badginations.each do |badgination| %>
 	<p><%= badgination.badge.name %> assigned to</p>
-	<p><%= badgination.user.name %></p>
+	<p><%= badgination.user.email %></p>
 
 	<p>
 		<%= link_to 'Show', badgination %>
@@ -17,5 +17,5 @@
 <% end %>
 
 <%= link_to 'New Badge Set', new_badgination_path %><br>
-    <%= link_to "Add a new badge", :badges %>
+<%= link_to "Add a new badge", :badges %>
 
