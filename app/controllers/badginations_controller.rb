@@ -19,35 +19,31 @@ class BadginationsController < ApplicationController
 
 	def create
 		@badgination = Badgination.create(badgination_params)
-
-		respond_to do |format|
-			if @badgination.save
-				flash[:notice] = "Badge has been assigned."
-				redirect_to @badgination
-			else
-				flash[:alert] = "Badge has not been added."
-				redirect_to badginations_path
-			end
+		if @badgination.save
+			flash[:notice] = "Badge has been assigned."
+			redirect_to badginations_path
+		else
+			flash[:alert] = "Badge has not been added."
+			redirect_to badginations_path
 		end
+
 	end
 
 	def update
-		respond_to do |format|
-			if @badgination.update(badgination_params)
-				flash[:notice] = "Badge has been updated."
-				redirect_to @badgination
-			else
-				flash[:alert] = "Badge has not been updated"
-				redirect_to badginations_path
-			end
+
+		if @badgination.update(badgination_params)
+			flash[:notice] = "Badge has been updated."
+			redirect_to @badgination
+		else
+			flash[:alert] = "Badge has not been updated"
+			redirect_to badginations_path
 		end
+
 	end
 
 	def destroy
 		@badgination.destroy
-		respond_to do |format|
-			redirect_to badginations_path
-		end
+		redirect_to badginations_path
 	end
 
 	private
