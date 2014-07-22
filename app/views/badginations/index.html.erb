@@ -3,31 +3,33 @@
 
 
 <% @users.each do |user| %>
-	<p><%= user.email %></p>
-
-	<% user.badges.each do |badge| %>
-		<p><%= badge.name %></p>
-		<p><%= link_to 'Remove Badge from user', badge, method: :delete, data: {confirm: 'Are you sure?'} %></p>
-	<% end %>
+	<p><%= link_to user.email, user %></p>
+	<ul>
+		<% user.badges.each do |badge| %>
+			<li><%= badge.name %></li>
+		<% end %>
+	</ul>
 <% end %>
 
 <%= link_to 'Assign a Badge', new_badgination_path %><br>
 <%= link_to "Add a new badge", :badges %>
 
 
+<% if current_user.try(:admin?) %>
+	<div>
+		<h3>Edit badges</h3>
+		<% @badginations.each do |badgination| %>
+			<p><%= badgination.badge.name %> assigned to</p>
+			<p><%= badgination.user.email %></p>
 
-<div>
-	<p>Edit badges (admins only)</p>
-	<% @badginations.each do |badgination| %>
-		<p><%= badgination.badge.name %> assigned to</p>
-		<p><%= badgination.user.email %></p>
+			<p>
+				<%= link_to 'Show', badgination %>
+				<%- link_to 'Edit', edit_badgination_path(badgination) %>
+				<%= link_to 'Unassign', badgination, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</p>
 
-		<p>
-			<%= link_to 'Show', badgination %>
-			<%- link_to 'Edit', edit_badgination_path(badgination) %>
-			<%= link_to 'Unassign', badgination, method: :delete, data: { confirm: 'Are you sure?' } %>
-		</p>
+		<% end %>
+	</div>
 
-	<% end %>
-</div>
+<% end %>
 

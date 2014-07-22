@@ -1,0 +1,8 @@
+<h2><%= @user.email %></h2>
+
+<p>User has the following badges:</p>
+
+<% @user.badges.each do |badge| %>
+	<p><%= link_to badge.name, badge %></p>
+
+<% end %>
