@@ -8,10 +8,10 @@ class EventsController < ApplicationController
 		@event = Event.new(event_params)
 		if @event.save
 			flash[:notice] = "Happy hour has been added."
-			redirect_to 'badginations_path'
+			redirect_to '/'
 		else
 			flash[:alert] = "Happy hour has not been added."
-			redirect_to 'badginations_path'
+			redirect_to '/'
 		end
 	end
 
