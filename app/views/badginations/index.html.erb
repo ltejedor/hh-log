@@ -1,35 +1,49 @@
-<h1>Badge Setter</h1>
+<div class="grid-3">
+
+	<h2>Current Leaderboard</h2>
 
 
 
-<% @users.each do |user| %>
-	<p><%= link_to user.email, user %></p>
-	<ul>
-		<% user.badges.each do |badge| %>
-			<li><%= badge.name %></li>
-		<% end %>
-	</ul>
-<% end %>
+	<% @users.each do |user| %>
+		<p><%= link_to user.email, user %></p>
+		<ul>
+			<% user.badges.each do |badge| %>
+				<li><%= badge.name %></li>
+			<% end %>
+		</ul>
+	<% end %>
 
-<%= link_to 'Assign a Badge', new_badgination_path %><br>
-<%= link_to "Add a new badge", :badges %>
+	<% if current_user.try(:admin?) %>
+
+		<%= link_to 'Assign a Badge', new_badgination_path %><br>
+		<%= link_to "Add a new badge", :badges %>
 
 
-<% if current_user.try(:admin?) %>
-	<div>
-		<h3>Edit badges</h3>
-		<% @badginations.each do |badgination| %>
-			<p><%= badgination.badge.name %> assigned to</p>
-			<p><%= badgination.user.email %></p>
+		<div>
+			<h3>Edit badges</h3>
+			<% @badginations.each do |badgination| %>
+				<p><%= badgination.badge.name %> assigned to</p>
+				<p><%= badgination.user.email %></p>
 
-			<p>
-				<%= link_to 'Show', badgination %>
-				<%- link_to 'Edit', edit_badgination_path(badgination) %>
-				<%= link_to 'Unassign', badgination, method: :delete, data: { confirm: 'Are you sure?' } %>
-			</p>
+				<p>
+					<%= link_to 'Show', badgination %>
+					<%- link_to 'Edit', edit_badgination_path(badgination) %>
+					<%= link_to 'Unassign', badgination, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</p>
 
-		<% end %>
-	</div>
+			<% end %>
+		</div>
 
-<% end %>
+	<% end %>
+</div>
+
+<div class="grid-1">
+	<h2>Events!</h2>
+	<% @events.each do |happyhour| %>
+		<h3><%= happyhour.date %></h3>
+		<p><%= happyhour.location %></p>
+	<% end %>
+
+	<p><%= link_to 'Add Upcoming Happy Hour', new_event_path %></p>
+</div>
 

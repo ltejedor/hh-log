@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722142125) do
+ActiveRecord::Schema.define(version: 20140722183244) do
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20140722142125) do
     t.integer  "user_id"
     t.integer  "badge_id"
     t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.date     "date"
+    t.string   "location"
+    t.text     "address"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,3 +4,7 @@ header{background-color: #4a2e72; padding: 9px 25px;}
 header .logo{font-weight: 700;}
 header .right-links{float: right; font-weight: 400;}
 header a, header{color: #fff; text-decoration: none;}
+
+.grid-3{float: left; width: 70%;}
+
+.grid-1{float: left; width: 25%;}
