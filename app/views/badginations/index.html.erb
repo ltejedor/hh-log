@@ -2,22 +2,6 @@
 
 	<h2>Current Leaderboard</h2>
 
-
-<<<<<<< HEAD
-<% @users.each do |user| %>
-	<p><%= user.email %></p>
-	<ul>
-	<% user.badges.each do |badge| %>
-
-		<li>
-			<%= badge.name %>
-		</li>
-
-	<% end %>
-	</ul>
-<% end %>
-=======
-
 	<% @users.each do |user| %>
 		<p><%= link_to user.email, user %></p>
 		<ul>
@@ -57,8 +41,9 @@
 		<h3><%= happyhour.date %></h3>
 		<p><%= happyhour.location %></p>
 	<% end %>
->>>>>>> 871cf0a61c6c84a6676a5f04a88d731b275c93f1
 
-	<p><%= link_to 'Add Upcoming Happy Hour', new_event_path %></p>
+	<% if current_user.try(:admin?) %>
+		<p><%= link_to 'Add Upcoming Happy Hour', new_event_path %></p>
+	<% end %>
 </div>
 
