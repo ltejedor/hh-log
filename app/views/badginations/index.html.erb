@@ -4,10 +4,15 @@
 
 <% @users.each do |user| %>
 	<p><%= user.email %></p>
+	<ul>
 	<% user.badges.each do |badge| %>
-		<p><%= badge.name %></p>
-	
+
+		<li>
+			<%= badge.name %>
+		</li>
+
 	<% end %>
+	</ul>
 <% end %>
 
 <%= link_to 'New Badge Set', new_badgination_path %><br>
