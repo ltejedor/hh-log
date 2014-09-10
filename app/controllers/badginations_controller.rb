@@ -5,6 +5,7 @@ class BadginationsController < ApplicationController
 		@users = User.all
 		@badges = Badge.all
 		@badginations = Badgination.all
+		@events = Event.all
 	end
 
 	def show
