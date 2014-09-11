@@ -20,8 +20,7 @@
 		<div>
 			<h3>Edit badges</h3>
 			<% @badginations.each do |badgination| %>
-				<p><%= badgination.badge.name %> assigned to</p>
-				<p><%= badgination.user.email %></p>
+				<p><%= badgination.badge.name %> assigned to <%= badgination.user.email %></p>
 
 				<p>
 					<%= link_to 'Show', badgination %>
