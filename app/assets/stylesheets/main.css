@@ -1,12 +1,14 @@
 body{font-family: 'Open Sans', sans-serif; }
 
-header{background-color: #3FB171; padding: 9px 25px;}
+header{background-color: #3FB171; padding: 12px 25px 8px 50px;}
 header .logo{font-weight: 700;}
 header .right-links{float: right; font-weight: 400;}
 header a, header{color: #fff; text-decoration: none;}
 
 a{color: #34A2BF;}
 a:hover{color: #A0D8D0;}
+
+.container{padding: 5px 50px;}
 
 .grid-3{float: left; width: 70%;}
 

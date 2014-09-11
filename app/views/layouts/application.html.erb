@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Zappy Hour</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<head>
+	  <title>Zappy Hour</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-</head>
-<body>
-	<header>
-		<span class="logo"><%= link_to image_tag('zhlogo.png'), root_path %></span>
+	  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<header>
+			<span class="logo"><%= link_to image_tag('zhlogo.png'), root_path %></span>
 
-		<span class="right-links">
-			<% if signed_in? %>
+			<span class="right-links">
+				<% if signed_in? %>
 
-				Signed in as <%= current_user.email %>
-				<%= link_to "Sign out", destroy_user_session_path, :method => :delete %></button>
+					Signed in as <%= current_user.email %>
+					<%= link_to "Sign out", destroy_user_session_path, :method => :delete %></button>
 
-			<% else %>
+				<% else %>
 
-				<%= link_to "Sign up", new_user_registration_path %>
-				<%= link_to "Sign in", new_user_session_path %>
+					<%= link_to "Sign up", new_user_registration_path %>
+					<%= link_to "Sign in", new_user_session_path %>
+				<% end %>
+			</span>
+		</header>
+
+		<div class="container">
+			<% flash.each do |key, value| %>
+				<div class="flash" id='<%= key %>'>
+					<%= value %>
+				</div>
 			<% end %>
-		</span>
-	</header>
 
-<% flash.each do |key, value| %>
-	<div class="flash" id='<%= key %>'>
-		<%= value %>
-	</div>
-<% end %>
-
-<%= yield %>
-
-</body>
+			<%= yield %>
+		</div>
+	</body>
 </html>
